@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * 
  * @author Shira Elitzur
@@ -17,6 +19,7 @@ public class Main extends Item {
 	/**
 	 * Item can stand alone or not but Main can not so i hide the super class field
 	 */
+	@SerializedName(value = "mainIsStandAlone")
 	private boolean isStandAlone = false;
 	
 	
