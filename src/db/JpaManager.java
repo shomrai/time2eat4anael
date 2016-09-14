@@ -1,3 +1,5 @@
+package db;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,7 +24,12 @@ public class JpaManager {
 		em = emf.createEntityManager();
 	}
 	
-
+	public ArrayList<Category> getCategories() {
+		Query query = em.createQuery("select c from Category c");
+		ArrayList<Category> categories = (ArrayList<Category>)query.getResultList();
+		return categories;
+		
+	}
 	
 	private void insertCategory( String title ) {
 		em.getTransaction().begin();
