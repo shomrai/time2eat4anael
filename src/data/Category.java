@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,17 +34,26 @@ public class Category {
 	@Column( name = "Title", nullable=false, length=30)
 	private String title;
 	
+    private String description;
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public String getDescription() {
+        return description;
+    }
+	
 	/**
 	 * The items of this category
 	 */
 	@OneToMany( mappedBy = "category") // One Category can have many items. Item can have only one Category
-	private ArrayList<Item> items;
+	private List<Item> items;
 	
 	/**
 	 * The meals of this category
 	 */
 	@OneToMany( mappedBy = "category") // One Category can have many meals. Meal can have only one Category
-	private ArrayList<Meal> meals;
+	private List<Meal> meals;
 
 	/**
 	 * The constructor of Category object sets its title as the given parameter
@@ -96,7 +106,7 @@ public class Category {
 	 * Returns the items of this category
 	 * @return the items of this category
 	 */
-	public ArrayList<Item> getItems() {
+	public List<Item> getItems() {
 		return items;
 	}
 
@@ -104,7 +114,7 @@ public class Category {
 	 * Sets items list to this category
 	 * @param items
 	 */
-	public void setItems(ArrayList<Item> items) {
+	public void setItems(List<Item> items) {
 		this.items = items;
 	}
 
@@ -112,7 +122,7 @@ public class Category {
 	 * Returns the meals of this category
 	 * @return
 	 */
-	public ArrayList<Meal> getMeals() {
+	public List<Meal> getMeals() {
 		return meals;
 	}
 
@@ -120,7 +130,7 @@ public class Category {
 	 * Sets meals list to this category
 	 * @param meals
 	 */
-	public void setMeals(ArrayList<Meal> meals) {
+	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
 	}
 

@@ -16,11 +16,6 @@ import com.google.gson.annotations.SerializedName;
 @Entity
 public class Main extends Item {
 
-	/**
-	 * Item can stand alone or not but Main can not so i hide the super class field
-	 */
-	@SerializedName(value = "mainIsStandAlone")
-	private boolean isStandAlone = false;
 	
 	
 }
