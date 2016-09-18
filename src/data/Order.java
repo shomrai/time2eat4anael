@@ -16,8 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.eclipse.persistence.annotations.Customizer;
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
+//import org.eclipse.persistence.annotations.Customizer;
+//import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  * 

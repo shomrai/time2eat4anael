@@ -3,14 +3,17 @@ package services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.google.gson.Gson;
 
 import data.Category;
+import data.Customer;
 import data.Item;
 import data.Meal;
 import db.JpaManager;
@@ -18,7 +21,26 @@ import db.JpaManager;
 @Path("/data")
 public class DataManager {
 
-	//private JpaManager jpa = new JpaManager();
+	private JpaManager jpa = new JpaManager();
+	
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/isCustomerExist")
+	public String isCustomerExist( @QueryParam("email") String email, @QueryParam("pass") String password ){
+		
+		//Gson gson = new Gson();
+		Customer c = new Customer();
+		c.setEmail(email);c.setPassword(password);
+//		c.setEmail("shira@elitzur.net");
+//		c.setPassword("123456");
+		boolean ok = jpa.isCustomerExist(c);
+		if(ok) {
+			return "ok 6";
+		} else {
+			return "notOk";
+		}
+	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -26,58 +48,58 @@ public class DataManager {
 	public String getCategories() {
 		Gson json = new Gson();
 		ArrayList<Category> categories = new ArrayList<>();
-	    Category cat = new Category();
-        cat.setTitle("Χ‘Χ©Χ¨Χ™");
-        cat.setDescription("ΧΧ¨Χ•Χ—Χ•Χª Χ‘Χ©Χ¨Χ™Χ•Χª ΧΧ•Χ©Χ§ΧΆΧ•Χª");
+        Category cat = new Category();
+        cat.setTitle("αωψι");
+        cat.setDescription("ΰψεηεϊ αωψιεϊ ξεωχςεϊ");
         // init items in category
         List<Item> items = new ArrayList<>();
         Item item = new Item();
-        item.setTitle("Χ©Χ Χ™Χ¦Χ");
+        item.setTitle("ωπιφμ");
         //item.setMeal(true);
         // init meals related to this item
         Meal meal = new Meal();
-        meal.setTitle("Χ©Χ Χ™Χ¦Χ Χ‘Χ¦ΧΧ—Χª");
+        meal.setTitle("ωπιφμ αφμηϊ");
         //item.addMeal(meal);
         meal = new Meal();
-        meal.setTitle("Χ©Χ Χ™Χ¦Χ Χ‘Χ‘ΧΧ’Χ");
+        meal.setTitle("ωπιφμ ααΰβθ");
         //item.addMeal(meal);
         meal = new Meal();
-        meal.setTitle("Χ©Χ Χ™Χ¦Χ Χ‘Χ¤Χ™ΧªΧ”");
+        meal.setTitle("ωπιφμ ατιϊδ");
         //item.addMeal(meal);
         items.add(item);
 
         item = new Item();
-        item.setTitle("Χ”ΧΧ‘Χ•Χ¨Χ’Χ¨");
+        item.setTitle("δξαεψβψ");
         //item.setMeal(true);
         // init meals related to this item
         meal = new Meal();
-        meal.setTitle("Χ”ΧΧ‘Χ•Χ¨Χ’Χ¨ Χ‘Χ¦ΧΧ—Χª");
+        meal.setTitle("δξαεψβψ αφμηϊ");
         //item.addMeal(meal);
         meal = new Meal();
-        meal.setTitle("Χ”ΧΧ‘Χ•Χ¨Χ’Χ¨ Χ‘Χ‘ΧΧ’Χ");
+        meal.setTitle("δξαεψβψ ααΰβθ");
         //item.addMeal(meal);
         meal = new Meal();
-        meal.setTitle("Χ”ΧΧ‘Χ•Χ¨Χ’Χ¨ Χ‘Χ¤Χ™ΧªΧ”");
+        meal.setTitle("δξαεψβψ ατιϊδ");
         //item.addMeal(meal);
         items.add(item);
 
         item = new Item();
-        item.setTitle("Χ¤Χ¨Χ’Χ™Χª");
+        item.setTitle("τψβιϊ");
         //item.setMeal(true);
         // init meals related to this item
         meal = new Meal();
-        meal.setTitle("Χ¤Χ¨Χ’Χ™Χª Χ‘Χ¦ΧΧ—Χª");
+        meal.setTitle("τψβιϊ αφμηϊ");
         //item.addMeal(meal);
         meal = new Meal();
-        meal.setTitle("Χ¤Χ¨Χ’Χ™Χª Χ‘Χ‘ΧΧ’Χ");
+        meal.setTitle("τψβιϊ ααΰβθ");
         //item.addMeal(meal);
         meal = new Meal();
-        meal.setTitle("Χ¤Χ¨Χ’Χ™Χª Χ‘Χ¤Χ™ΧªΧ”");
+        meal.setTitle("τψβιϊ ατιϊδ");
         //item.addMeal(meal);
         items.add(item);
 
         item = new Item();
-        item.setTitle("ΧΧΧ¤Χ” Χ©Χ•Χ•ΧΧ¨ΧΧ”");
+        item.setTitle("μΰτδ ωεεΰψξδ");
         //item.setMeal(false);
         items.add(item);
 
@@ -87,28 +109,28 @@ public class DataManager {
 
         categories.add(cat);
         cat = new Category();
-        cat.setTitle("Χ—ΧΧ‘Χ™");
-        cat.setDescription("ΧΧ¨Χ•Χ—Χ•Χª Χ—ΧΧ‘Χ™Χ•Χª ΧΧ“Χ”Χ™ΧΧ•Χª");
+        cat.setTitle("ημαι");
+        cat.setDescription("ΰψεηεϊ ημαιεϊ ξγδιξεϊ");
         categories.add(cat);
         cat = new Category();
-        cat.setTitle("Χ΅ΧΧΧ™Χ");
-        cat.setDescription("ΧΧ‘Χ—Χ¨ Χ΅ΧΧΧ™Χ Χ‘Χ”Χ¨Χ›Χ‘Χ”");
+        cat.setTitle("ρμθιν");
+        cat.setDescription("ξαηψ ρμθιν αδψλαδ");
         categories.add(cat);
         cat = new Category();
-        cat.setTitle("Χ©ΧªΧ™Χ” Χ—ΧΧ”");
-        cat.setDescription("Χ›Χ Χ΅Χ•Χ’Χ™ Χ”Χ©ΧªΧ™Χ™Χ” Χ”Χ—ΧΧ”");
+        cat.setTitle("ωϊιδ ηξδ");
+        cat.setDescription("λμ ρεβι δωϊιιδ δηξδ");
         categories.add(cat);
         cat = new Category();
-        cat.setTitle("ΧΧΧ¤Χ™Χ");
-        cat.setDescription("Χ›Χ Χ΅Χ•Χ’Χ™ Χ”ΧΧΧ¤Χ™Χ");
+        cat.setTitle("ξΰτιν");
+        cat.setDescription("λμ ρεβι δξΰτιν");
         categories.add(cat);
         cat = new Category();
-        cat.setTitle("Χ©ΧªΧ™Χ” Χ§Χ¨Χ”");
-        cat.setDescription("Χ›Χ Χ΅Χ•Χ’Χ™ Χ”Χ©ΧªΧ™Χ” Χ”Χ§Χ¨Χ”");
+        cat.setTitle("ωϊιδ χψδ");
+        cat.setDescription("λμ ρεβι δωϊιδ δχψδ");
         categories.add(cat);
         cat = new Category();
-        cat.setTitle("Χ—ΧΧ™Χ¤Χ™Χ");
-        cat.setDescription("Χ‘ΧΧ‘Χ”,Χ‘Χ™Χ΅ΧΧ™,Χ¤Χ΅Χ§ Χ–ΧΧ...");
+        cat.setTitle("ηθιτιν");
+        cat.setDescription("αξαδ,αιρμι,τρχ ζξο...");
         categories.add(cat);
         
         
