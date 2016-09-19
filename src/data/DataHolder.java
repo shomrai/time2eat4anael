@@ -202,16 +202,22 @@ public class DataHolder {
         cat.setItems(items);
         cat.setMeals(meals);
         categories.add(cat);
-
-        items = new ArrayList<Item>(drinks);
-
-
+        
+        items = new ArrayList<>();
+        
         cat = new Category();
         cat.setTitle("חלבי");
         cat.setDescription("ארוחות חלביות מדהימות");
+        item = new Item();
+        item.setTitle("טוסט");
+        item.setStandAlone(false);
+        items.add(item);
         meals = new ArrayList<>();
         meal = new Meal();
-        meal.setTitle("טוסט");
+        meal.setTitle("טוסט מיוחד");
+        main = new Main();
+        main.setTitle("טוסט");
+        meal.setMain(main);
         meal.setPrice(15);
         
         extras = new ArrayList<Item>();
@@ -236,15 +242,25 @@ public class DataHolder {
         extra.setPrice(5);
         extras.add(extra);
         meal.setExtras(extras);
-        
+        meals.add(meal);
+        cat.setItems(items);
+        cat.setMeals(meals);
         categories.add(cat);
+        
         cat = new Category();
         cat.setTitle("סלטים");
         cat.setDescription("מבחר סלטים בהרכבה");
         
         meals = new ArrayList<>();
+        items = new ArrayList<>();
+        item = new Item();
+        item.setTitle("סלט");
+        items.add(item);
         meal = new Meal();
+        main = new Main();
+        main.setTitle("סלט");
         meal.setTitle("סלט חסה");
+        meal.setMain(main);
         meal.setPrice(15);
         
         extras = new ArrayList<Item>();
@@ -269,7 +285,10 @@ public class DataHolder {
         extra.setPrice(5);
         extras.add(extra);
         meal.setExtras(extras);
+        meals.add(meal);
+        cat.setMeals(meals);
         
+        cat.setItems(items);
         categories.add(cat);
         
         cat = new Category();
@@ -298,11 +317,7 @@ public class DataHolder {
         hotDrinks.add(item);
         cat.setItems(hotDrinks);
         categories.add(cat);
-        cat = new Category();
-        cat.setTitle("שתיה קרה");
-        cat.setDescription("כל סוגי השתיה הקרה");
-        cat.setItems(items);
-        categories.add(cat);
+        
         cat = new Category();
         cat.setTitle("מאפים");
         cat.setDescription("כל סוגי המאפים");
@@ -352,6 +367,16 @@ public class DataHolder {
         snacks.add(item);
         cat.setItems(snacks);
         categories.add(cat);
+
+        cat = new Category();
+        cat.setTitle("שתיה קרה");
+        cat.setDescription("כל סוגי השתיה הקרה");
+        items = new ArrayList<Item>(drinks);
+        cat.setItems(items);
+        categories.add(cat);
+
+
+        
 	}
 
 }
