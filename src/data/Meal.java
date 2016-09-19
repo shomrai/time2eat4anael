@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,7 +56,7 @@ public class Meal {
 	 */
 	@ManyToMany // One Meal have many items, One Item can be connected to many meals
 	@JoinTable( name = "meals_items", inverseJoinColumns = @JoinColumn( name = "Extra_Id" ))
-	private ArrayList<Item> extras;
+	private List<Item> extras;
 	
 	/**
 	 * Extra amount means how many extras the customer can choose 
@@ -73,7 +74,7 @@ public class Meal {
 	 */
 	@ManyToMany // One Meal have many Drinks, One Drink can be connected to many meals
 	@JoinTable( name = "meals_drinks", inverseJoinColumns = @JoinColumn( name = "Drink_Id" ))
-	private ArrayList<Drink> drinkOptions;
+	private List<Drink> drinkOptions;
 	
 	/**
 	 * The price of this meal
@@ -143,7 +144,7 @@ public class Meal {
 	 * Returns the items that this meal contains or the extras for meal with main+extras
 	 * @return the items that this meal contains
 	 */
-	public ArrayList<Item> getExtras() {
+	public List<Item> getExtras() {
 		return extras;
 	}
 
@@ -151,7 +152,7 @@ public class Meal {
 	 * Sets the items list for this meal
 	 * @param extras
 	 */
-	public void setExtras(ArrayList<Item> extras) {
+	public void setExtras(List<Item> extras) {
 		this.extras = extras;
 	}
 
@@ -208,7 +209,7 @@ public class Meal {
 	 * Returns list of the options that the customer can choose his drink from
 	 * @return list of the options to drink in this meal
 	 */
-	public ArrayList<Drink> getDrinkOptions() {
+	public List<Drink> getDrinkOptions() {
 		return drinkOptions;
 	}
 
@@ -216,7 +217,7 @@ public class Meal {
 	 * Sets list of drink options
 	 * @param drinkOptions
 	 */
-	public void setDrinkOptions(ArrayList<Drink> drinkOptions) {
+	public void setDrinkOptions(List<Drink> drinkOptions) {
 		this.drinkOptions = drinkOptions;
 	}
 
