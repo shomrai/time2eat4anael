@@ -78,12 +78,35 @@ public class DataHolder {
         meal.setMain(main);
         meals.add(meal);
         
+        extras = new ArrayList<Item>();
+        extra = new Item();
+        extra.setTitle("חומוס");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("חריף");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("טחינה");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("חמוצים");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("כרוב סגול");
+        extra.setPrice(5);
+        extras.add(extra);
+        
         meal = new Meal();
         meal.setTitle("שניצל בבאגט");
         main = new Main();
         main.setTitle("שניצל");
         meal.setMain(main);
         meal.setPrice(35.66657);
+        meal.setExtras(extras);
         meals.add(meal);
         
         meal = new Meal();
@@ -92,7 +115,22 @@ public class DataHolder {
         main.setTitle("שניצל");
         meal.setMain(main);
         meal.setPrice(15.5);
+        meal.setExtras(extras);
         meals.add(meal);
+        
+        extras = new ArrayList<Item>();
+        extra = new Item();
+        extra.setTitle("אורז");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("צ'יפס");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("ירקות");
+        extra.setPrice(5);
+        extras.add(extra);
         
         items.add(item);
 
@@ -105,7 +143,30 @@ public class DataHolder {
         main.setTitle("המבורגר");
         meal.setMain(main);
         meal.setPrice(32.5);
+        meal.setExtras(extras);
         meals.add(meal);
+        
+        extras = new ArrayList<Item>();
+        extra = new Item();
+        extra.setTitle("חומוס");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("חריף");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("טחינה");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("חמוצים");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("כרוב סגול");
+        extra.setPrice(5);
+        extras.add(extra);
         
         meal = new Meal();
         meal.setTitle("המבורגר בבאגט");
@@ -113,7 +174,30 @@ public class DataHolder {
         main.setTitle("המבורגר");
         meal.setMain(main);
         meal.setPrice(16);
+        meal.setExtras(extras);
         meals.add(meal);
+        
+        extras = new ArrayList<Item>();
+        extra = new Item();
+        extra.setTitle("חומוס");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("חריף");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("טחינה");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("חמוצים");
+        extra.setPrice(5);
+        extras.add(extra);
+        extra = new Item();
+        extra.setTitle("כרוב סגול");
+        extra.setPrice(5);
+        extras.add(extra);
         
         meal = new Meal();
         meal.setTitle("המבורגר בפיתה");
@@ -121,6 +205,7 @@ public class DataHolder {
         main.setTitle("המבורגר");
         meal.setMain(main);
         meal.setPrice(17.6);
+        meal.setExtras(extras);
         meals.add(meal);
         items.add(item);
 
@@ -190,13 +275,10 @@ public class DataHolder {
         main.setTitle("פרגית");
         meal.setMain(main);
         meal.setPrice(18);
+        meal.setExtras(extras);
         meals.add(meal);
         items.add(item);
 
-        item = new Item();
-        item.setTitle("לאפה שווארמה");
-        item.setStandAlone(true);
-        items.add(item);
 
         // set items and meals to category
         cat.setItems(items);
