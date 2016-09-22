@@ -46,13 +46,13 @@ public class Category {
 	/**
 	 * The items of this category
 	 */
-	@OneToMany( mappedBy = "category") // One Category can have many items. Item can have only one Category
+	@OneToMany
 	private List<Item> items;
 	
 	/**
 	 * The meals of this category
 	 */
-	@OneToMany( mappedBy = "category") // One Category can have many meals. Meal can have only one Category
+	@OneToMany
 	private List<Meal> meals;
 
 	/**

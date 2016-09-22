@@ -46,12 +46,12 @@ public class Item {
 	@Column( name = "Price", nullable=true)
 	private double price;
 	
-	/**
-	 * The category of this item (food category like drinks, salads...)
-	 */
-	@ManyToOne // One Category can have many items. Item can have only one Category
-	@JoinColumn( name = "Category_Id")
-	private Category category;
+//	/**
+//	 * The category of this item (food category like drinks, salads...)
+//	 */
+//	@ManyToOne // One Category can have many items. Item can have only one Category
+//	@JoinColumn( name = "Category_Id")
+//	private Category category;
 	
 	
 	/**
@@ -118,20 +118,20 @@ public class Item {
 		this.price = price;
 	}
 
-	/**
-	 * Returns the category of this item
-	 * @return the category of this item
-	 */
-	public Category getCategory() {
-		return category;
-	}
-
-	/**
-	 * Sets category object for this item
-	 * @param category
-	 */
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+//	/**
+//	 * Returns the category of this item
+//	 * @return the category of this item
+//	 */
+//	public Category getCategory() {
+//		return category;
+//	}
+//
+//	/**
+//	 * Sets category object for this item
+//	 * @param category
+//	 */
+//	public void setCategory(Category category) {
+//		this.category = category;
+//	}
 
 }

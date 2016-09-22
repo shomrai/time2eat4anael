@@ -82,12 +82,12 @@ public class Meal {
 	@Column(name = "Price", nullable=false)
 	private double price;
 	
-	/**
-	 * The category of this meal
-	 */
-	@ManyToOne // One Category can have many meals. Meal can have only one Category
-	@JoinColumn( name = "Category_Id" )
-	private Category category;
+//	/**
+//	 * The category of this meal
+//	 */
+//	@ManyToOne // One Category can have many meals. Meal can have only one Category
+//	@JoinColumn( name = "Category_Id" )
+//	private Category category;
 	
 	
 	
@@ -221,19 +221,19 @@ public class Meal {
 		this.drinkOptions = drinkOptions;
 	}
 
-	/**
-	 * Returns the category object of this meal
-	 * @return the category of this meal
-	 */
-	public Category getCategory() {
-		return category;
-	}
-
-	/**
-	 * Sets category object to this meal
-	 * @param category
-	 */
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+//	/**
+//	 * Returns the category object of this meal
+//	 * @return the category of this meal
+//	 */
+//	public Category getCategory() {
+//		return category;
+//	}
+//
+//	/**
+//	 * Sets category object to this meal
+//	 * @param category
+//	 */
+//	public void setCategory(Category category) {
+//		this.category = category;
+//	}
 }

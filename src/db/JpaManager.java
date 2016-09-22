@@ -30,6 +30,7 @@ public class JpaManager {
 	public List<Category> getCategories() {
 		Query query = em.createQuery("select c from Category c");
 		Vector<Category> categories = (Vector<Category>)query.getResultList();
+		System.out.println(categories.get(0).getTitle());
 		return categories;	
 	}
 	
@@ -49,7 +50,7 @@ public class JpaManager {
 		item.setTitle(title);
 		item.setPrice(price);
 		item.setStandAlone(isStandAlone);
-		item.setCategory(category);
+		//item.setCategory(category);
 		
 		em.persist(item);
 		em.getTransaction().commit();
