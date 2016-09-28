@@ -48,7 +48,7 @@ public class Customer {
 	/**
 	 * The phone number of the customer
 	 */
-	@Column( name = "Phone", nullable=false, length=30)
+	@Column( name = "Phone", nullable=true, length=30)
 	private String phoneNumber;
 	
 	/**

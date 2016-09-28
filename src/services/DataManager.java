@@ -23,26 +23,7 @@ import db.JpaManager;
 @Path("/data")
 public class DataManager {
 
-	private JpaManager jpa = new JpaManager();
-	
-	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/isCustomerExist")
-	public String isCustomerExist( @QueryParam("email") String email, @QueryParam("pass") String password ){
-		
-		//Gson gson = new Gson();
-		Customer c = new Customer();
-		c.setEmail(email);c.setPassword(password);
-//		c.setEmail("shira@elitzur.net");
-//		c.setPassword("123456");
-		boolean ok = jpa.isCustomerExist(c);
-		if(ok) {
-			return "ok";
-		} else {
-			return "notOk";
-		}
-	}
+	private JpaManager jpa = JpaManager.getInstance();
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -50,9 +31,7 @@ public class DataManager {
 	public String getCategories() {
 		Gson json = new Gson();
 		List<Category> categories = new ArrayList<>();
-//		categories = DataHolder.getInstance().getCategories();
 		categories = jpa.getCategories();
-		//System.out.println(categories.get(0).getTitle());
 		return json.toJson(categories.toArray());
 		
 	}

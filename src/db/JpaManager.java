@@ -21,8 +21,17 @@ public class JpaManager {
 	private EntityManagerFactory emf;
 	private EntityManager em;
 	
+	private static JpaManager jpa;
 	
-	public JpaManager() {
+	public static JpaManager getInstance() {
+		if(jpa == null){
+			return new JpaManager();
+		} else {
+			return jpa;
+		}
+	}
+	
+	private JpaManager() {
 		emf = Persistence.createEntityManagerFactory("CafeteriaServer");
 		em = emf.createEntityManager();
 	}
@@ -32,6 +41,35 @@ public class JpaManager {
 		Vector<Category> categories = (Vector<Category>)query.getResultList();
 		System.out.println(categories.get(0).getTitle());
 		return categories;	
+	}
+	
+	public boolean isUserExist( Customer customer ) {
+		String email = customer.getEmail();
+		String password = customer.getPassword();
+		
+		Query query = em.createQuery("select c from Customer c where c.email = :email and c.password = :password");
+		query.setParameter("email", email);
+		query.setParameter("password", password);
+		
+		try{
+		Customer c = (Customer)query.getSingleResult();
+		} catch ( NoResultException e ) {
+			return false;
+		}
+		return true;
+		
+	}
+	
+	public boolean insertUser( Customer customer ) {
+		em.getTransaction().begin();		
+		em.persist(customer);
+		em.getTransaction().commit();
+		
+		if(em.contains(customer)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	private void insertCategory( String title ) {
@@ -71,52 +109,9 @@ public class JpaManager {
 		}
 	}
 	
-	public boolean isCustomerExist( Customer customer ) {
-		String email = customer.getEmail();
-		String password = customer.getPassword();
-		
-		Query query = em.createQuery("select c from Customer c where c.email = :email and c.password = :password");
-		query.setParameter("email", email);
-		query.setParameter("password", password);
-		
-		try{
-		Customer c = (Customer)query.getSingleResult();
-		} catch ( NoResultException e ) {
-			return false;
-		}
-		return true;
-		
-	}
+
 	
 	public static void main ( String [] args ) {
 		JpaManager jpa = new JpaManager();
-		Customer customer = new Customer();
-		customer.setEmail("shira@elitzur.net");
-		customer.setPassword("123456");
-		boolean ok = jpa.isCustomerExist(customer);
-		if(ok) {
-			System.out.println("Good User");
-		} else {
-			System.out.println("Bad User");
-		}
-		customer = new Customer();
-		customer.setEmail("shira@gmail.net");
-		customer.setPassword("123456");
-		ok = jpa.isCustomerExist(customer);
-		if(ok) {
-			System.out.println("Good User");
-		} else {
-			System.out.println("Bad User");
-		}
-//		jpa.insertCategory("Hot Drinks");
-//		jpa.insertCategory("Cold Drinks");
-//		jpa.insertCategory("Salads");
-//		jpa.insertCategory("Meat");
-//		Category cat = jpa.getCategory();
-//		jpa.insertItem("Big Coffee", 10, true, cat);
-//		jpa.printItemsInCat(cat);
-//		jpa.insertItem("Small Coffee", 6, true, cat);
-//		jpa.insertItem("Tea", 2, true, cat);
-//		jpa.printItemsInCat(cat);
 	}
 }
