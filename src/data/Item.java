@@ -34,11 +34,11 @@ public class Item {
 	@Column( name = "Title", nullable=false, length=30)
 	private String title;
 	
-	/**
-	 * An indication if this item is for sale as is or only as part of a meal
-	 */
-	@Column( name = "Is_Stand_Alone", nullable=false)
-	private boolean isStandAlone;
+//	/**
+//	 * An indication if this item is for sale as is or only as part of a meal
+//	 */
+//	@Column( name = "Is_Stand_Alone", nullable=false)
+//	private boolean isStandAlone;
 	
 	/**
 	 * The price of this item (only for stand alone item)
@@ -86,21 +86,21 @@ public class Item {
 		this.title = title;
 	}
 
-	/**
-	 * Retruns true if this item is for sale as is or false if it is only part of a meal
-	 * @return true if this item is for sale as is
-	 */
-	public boolean isStandAlone() {
-		return isStandAlone;
-	}
-
-	/**
-	 * Sets if this item is for sale as is or only as part of a meal
-	 * @param isStandAlone
-	 */
-	public void setStandAlone(boolean isStandAlone) {
-		this.isStandAlone = isStandAlone;
-	}
+//	/**
+//	 * Retruns true if this item is for sale as is or false if it is only part of a meal
+//	 * @return true if this item is for sale as is
+//	 */
+//	public boolean isStandAlone() {
+//		return isStandAlone;
+//	}
+//
+//	/**
+//	 * Sets if this item is for sale as is or only as part of a meal
+//	 * @param isStandAlone
+//	 */
+//	public void setStandAlone(boolean isStandAlone) {
+//		this.isStandAlone = isStandAlone;
+//	}
 
 	/**
 	 * Returns the price of this item

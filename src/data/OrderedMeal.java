@@ -1,6 +1,6 @@
 package data;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,7 +45,7 @@ public class OrderedMeal {
 	 */
 	@ManyToMany // OrderedMeal have many items, Item can be connected to many meals. Unidirectional ( No access from Item to its OrderedMeal(s) )
 	@JoinTable( inverseJoinColumns = @JoinColumn( name = "Chosen_Extra_Id"))
-	private ArrayList<Item> chosenExtras;
+	private List<Extra> chosenExtras;
 	
 	/** 
 	 * The drink that the customer chose (optional)
@@ -105,7 +105,7 @@ public class OrderedMeal {
 	 * Returns the list of the extras that the customer chose for his meal ( this meal...)
 	 * @return the list of the extras that the customer chose 
 	 */
-	public ArrayList<Item> getChosenExtras() {
+	public List<Extra> getChosenExtras() {
 		return chosenExtras;
 	}
 
@@ -113,7 +113,7 @@ public class OrderedMeal {
 	 * Sets the list of extras that the customer chose
 	 * @param chosenExtras
 	 */
-	public void setChosenExtras(ArrayList<Item> chosenExtras) {
+	public void setChosenExtras(List<Extra> chosenExtras) {
 		this.chosenExtras = chosenExtras;
 	}
 

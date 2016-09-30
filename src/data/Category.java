@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author Shira Elitzur
@@ -54,6 +55,11 @@ public class Category {
 	 */
 	@OneToMany
 	private List<Meal> meals;
+	
+	/**
+	 * The icon of this category
+	 */
+	private byte[] icon;
 
 	/**
 	 * The constructor of Category object sets its title as the given parameter
@@ -132,6 +138,14 @@ public class Category {
 	 */
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
+	}
+	
+	public byte[] getIcon() {
+		return icon;
+	}
+	
+	public void setIcon(byte[] icon) {
+		this.icon = icon;
 	}
 
 }

@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import data.Category;
 import data.Customer;
 import data.DataHolder;
+import data.Drink;
 import data.Item;
 import data.Meal;
 import db.JpaManager;
@@ -34,6 +35,17 @@ public class DataManager {
 		categories = jpa.getCategories();
 		return json.toJson(categories.toArray());
 		
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/getDrinks")
+	public String getDrinks() {
+		Gson json = new Gson();
+		List<Drink> drinks = new ArrayList<>();
+		drinks = jpa.getDrinksList();
+		System.out.println(drinks.get(0).getTitle());
+		return json.toJson(drinks.toArray());
 	}
 	
 	@GET

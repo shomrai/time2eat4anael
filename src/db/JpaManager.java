@@ -13,6 +13,7 @@ import javax.persistence.Query;
 import sun.swing.PrintingStatus;
 import data.Category;
 import data.Customer;
+import data.Drink;
 import data.Item;
 
 
@@ -41,6 +42,12 @@ public class JpaManager {
 		Vector<Category> categories = (Vector<Category>)query.getResultList();
 		System.out.println(categories.get(0).getTitle());
 		return categories;	
+	}
+	
+	public List<Drink> getDrinksList() {
+		Query query = em.createQuery("select d from Drink d");
+		Vector<Drink> drinks = (Vector<Drink>)query.getResultList();
+		return drinks;	
 	}
 	
 	public boolean isUserExist( Customer customer ) {
@@ -81,18 +88,18 @@ public class JpaManager {
 		em.getTransaction().commit();
 	}
 	
-	private void insertItem( String title, double price, boolean isStandAlone, Category category ) {
-		em.getTransaction().begin();
-		
-		Item item = new Item();
-		item.setTitle(title);
-		item.setPrice(price);
-		item.setStandAlone(isStandAlone);
-		//item.setCategory(category);
-		
-		em.persist(item);
-		em.getTransaction().commit();
-	}
+//	private void insertItem( String title, double price, boolean isStandAlone, Category category ) {
+//		em.getTransaction().begin();
+//		
+//		Item item = new Item();
+//		item.setTitle(title);
+//		item.setPrice(price);
+//		item.setStandAlone(isStandAlone);
+//		//item.setCategory(category);
+//		
+//		em.persist(item);
+//		em.getTransaction().commit();
+//	}
 	
 	private Category getCategory() {
 		Query query = em.createQuery("select c from Category c where c.title = 'Hot Drinks'");

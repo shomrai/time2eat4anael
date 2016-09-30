@@ -56,7 +56,7 @@ public class Meal {
 	 */
 	@ManyToMany // One Meal have many items, One Item can be connected to many meals
 	@JoinTable( name = "meals_items", inverseJoinColumns = @JoinColumn( name = "Extra_Id" ))
-	private List<Item> extras;
+	private List<Extra> extras;
 	
 	/**
 	 * Extra amount means how many extras the customer can choose 
@@ -65,32 +65,10 @@ public class Meal {
 	private int extraAmount;
 	
 	/**
-	 * Indicates if this meal includes drink to choose
-	 */
-	private boolean drink;
-	
-	/**
-	 * List of drinks that the customer can choose from
-	 */
-	@ManyToMany // One Meal have many Drinks, One Drink can be connected to many meals
-	@JoinTable( name = "meals_drinks", inverseJoinColumns = @JoinColumn( name = "Drink_Id" ))
-	private List<Drink> drinkOptions;
-	
-	/**
 	 * The price of this meal
 	 */
 	@Column(name = "Price", nullable=false)
 	private double price;
-	
-//	/**
-//	 * The category of this meal
-//	 */
-//	@ManyToOne // One Category can have many meals. Meal can have only one Category
-//	@JoinColumn( name = "Category_Id" )
-//	private Category category;
-	
-	
-	
 
 	/**
 	 * Returns the id of this meal
@@ -144,7 +122,7 @@ public class Meal {
 	 * Returns the items that this meal contains or the extras for meal with main+extras
 	 * @return the items that this meal contains
 	 */
-	public List<Item> getExtras() {
+	public List<Extra> getExtras() {
 		return extras;
 	}
 
@@ -152,7 +130,7 @@ public class Meal {
 	 * Sets the items list for this meal
 	 * @param extras
 	 */
-	public void setExtras(List<Item> extras) {
+	public void setExtras(List<Extra> extras) {
 		this.extras = extras;
 	}
 
@@ -189,51 +167,4 @@ public class Meal {
 		this.extraAmount = extraAmount;
 	}
 
-	/**
-	 * Returns whether this Meal contains drink
-	 * @return whether this Meal contains drink
-	 */
-	public boolean isDrink() {
-		return drink;
-	}
-
-	/**
-	 * Sets whether this Meal contains drink
-	 * @param drink
-	 */
-	public void setDrink(boolean drink) {
-		this.drink = drink;
-	}
-
-	/**
-	 * Returns list of the options that the customer can choose his drink from
-	 * @return list of the options to drink in this meal
-	 */
-	public List<Drink> getDrinkOptions() {
-		return drinkOptions;
-	}
-
-	/**
-	 * Sets list of drink options
-	 * @param drinkOptions
-	 */
-	public void setDrinkOptions(List<Drink> drinkOptions) {
-		this.drinkOptions = drinkOptions;
-	}
-
-//	/**
-//	 * Returns the category object of this meal
-//	 * @return the category of this meal
-//	 */
-//	public Category getCategory() {
-//		return category;
-//	}
-//
-//	/**
-//	 * Sets category object to this meal
-//	 * @param category
-//	 */
-//	public void setCategory(Category category) {
-//		this.category = category;
-//	}
 }
