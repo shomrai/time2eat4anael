@@ -178,9 +178,18 @@ public class Order {
 	 * Returns the amount to pay for this order
 	 * @return the amount to pay for this order
 	 */
-	public double getPayment() {
-		return payment;
-	}
+    public double getPayment() {
+        payment = 0;
+        for( OrderedMeal meal : getMeals() ) {
+            payment += (meal.getParentMeal().getPrice()) + meal.getDrinkPrice() + meal.getExtraPrice();
+        }
+
+        for( Item item : getItems() ) {
+            payment += item.getPrice();
+        }
+
+        return payment;
+    }
 
 	/**
 	 * Sets the amount to pay for this order

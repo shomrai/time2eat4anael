@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -66,6 +67,12 @@ public class OrderedMeal {
 	@ManyToOne // OrderedMeal has only one Order, Order can have many OrderedMeal(s). Bidirectional ( Order has list of OrderedMeal )
 	@JoinColumn( name = "Order_Id" )
 	private Order order;
+	
+	@Transient
+    private double drinkPrice;
+	@Transient
+    private double extraPrice;
+
 	
 	
 
@@ -165,5 +172,21 @@ public class OrderedMeal {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+	
+	public double getDrinkPrice() {
+        return drinkPrice;
+    }
+
+    public void setDrinkPrice(double drinkPrice) {
+        this.drinkPrice = drinkPrice;
+    }
+
+    public double getExtraPrice() {
+        return extraPrice;
+    }
+
+    public void setExtraPrice(double extraPrice) {
+        this.extraPrice = extraPrice;
+    }
 	
 }
