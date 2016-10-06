@@ -31,20 +31,13 @@ public class UsersService {
 	private JpaManager jpa = JpaManager.getInstance();
 	
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/isUserExist")
 	public String isUserExist( @QueryParam("email") String email, @QueryParam("pass") String password ){
 		
-		//Gson gson = new Gson();
-		Customer c = new Customer();
-		c.setEmail(email);
-		c.setPassword(password);
-		boolean ok = jpa.isUserExist(c);
-		if(ok) {
-			return "OK";
-		} else {
-			return "notOk";
-		}
+		Customer c = jpa.isUserExist(email,password);
+		Gson json = new Gson();
+		return json.toJson(c);
 	}
 	
 	@POST

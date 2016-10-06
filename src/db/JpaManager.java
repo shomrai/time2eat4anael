@@ -50,21 +50,18 @@ public class JpaManager {
 		return drinks;	
 	}
 	
-	public boolean isUserExist( Customer customer ) {
-		String email = customer.getEmail();
-		String password = customer.getPassword();
-		
+	public Customer isUserExist( String email,String password ) {	
 		Query query = em.createQuery("select c from Customer c where c.email = :email and c.password = :password");
 		query.setParameter("email", email);
 		query.setParameter("password", password);
 		
+		Customer c = null;
 		try{
-		Customer c = (Customer)query.getSingleResult();
+		c = (Customer)query.getSingleResult();
 		} catch ( NoResultException e ) {
-			return false;
+			return null;
 		}
-		return true;
-		
+		return c;
 	}
 	
 	public boolean insertUser( Customer customer ) {
