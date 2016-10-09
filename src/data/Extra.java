@@ -26,6 +26,12 @@ public class Extra {
 	
 	
 	/**
+	 * The price of this extra.
+	 */
+	@Column(name = "Price", nullable=false)
+	private Double price;
+	
+	/**
 	 * Returns the id of this extra
 	 * @return the id of this extra
 	 */
@@ -56,5 +62,23 @@ public class Extra {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	/**
+	 * Returns the price of this extra
+	 * @return the price of this extra
+	 */
+	public Double getPrice() {
+		return price;
+	}
+	
+	/**
+	 * Sets price to this extra
+	 * @param price
+	 */
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	
+	
 
 }

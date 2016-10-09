@@ -92,7 +92,11 @@ public class Order {
 	@Column( name = "Comment", nullable=true, length=5000)
 	private String comment;
 	
-	
+    /**
+     * The customer can add a time for picking up his order
+     */
+	@Column( name = "Pickup_Time", nullable=true, length=50)
+    private String pickupTime;
 	
 	/**
 	 * Returns the id of this order
@@ -180,8 +184,19 @@ public class Order {
 	 */
     public double getPayment() {
         payment = 0;
+        double drinkPrice = 0;
+        double extrasPrice = 0;
+        
         for( OrderedMeal meal : getMeals() ) {
-            payment += (meal.getParentMeal().getPrice()) + meal.getDrinkPrice() + meal.getExtraPrice();
+            if (meal.getChosenDrink()!= null) {
+                drinkPrice = meal.getChosenDrink().getPrice();
+            }
+        	// if the amount of extras chosen is bigger then the amount allowed,
+        	// add the price of last meal - to be changed according to the expensive/cheap extra 
+        	if (meal.getChosenExtras().size() > meal.getParentMeal().getExtraAmount()){
+        		extrasPrice = meal.getChosenExtras().get(meal.getChosenExtras().size()-1).getPrice();
+        	}
+            payment += (meal.getParentMeal().getPrice()) + drinkPrice + extrasPrice;
         }
 
         for( Item item : getItems() ) {

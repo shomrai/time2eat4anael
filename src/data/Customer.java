@@ -54,7 +54,7 @@ public class Customer {
 	/**
 	 * The password of this customer
 	 */
-	@Column( name = "Password", nullable=false, length=10)
+	@Column( name = "Password", nullable=false, length=20)
 	private String password;
 	
 	/**

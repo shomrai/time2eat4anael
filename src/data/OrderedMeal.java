@@ -62,19 +62,18 @@ public class OrderedMeal {
 	private String comment;
 	
 	/**
+	 * The total price of this meal.
+	 */
+	@Column(name = "Total_Price", nullable=false)
+	private Double totalPrice;
+	
+	/**
 	 * The parent-order of this ordered meal
 	 */
 	@ManyToOne // OrderedMeal has only one Order, Order can have many OrderedMeal(s). Bidirectional ( Order has list of OrderedMeal )
 	@JoinColumn( name = "Order_Id" )
 	private Order order;
-	
-	@Transient
-    private double drinkPrice;
-	@Transient
-    private double extraPrice;
 
-	
-	
 
 	/**
 	 * Returns the id of this ordered meal
@@ -172,21 +171,23 @@ public class OrderedMeal {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+
+	/**
+	 * Returns the total price of this ordered meal
+	 * @return the total price of the meal
+	 */
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
 	
-	public double getDrinkPrice() {
-        return drinkPrice;
-    }
-
-    public void setDrinkPrice(double drinkPrice) {
-        this.drinkPrice = drinkPrice;
-    }
-
-    public double getExtraPrice() {
-        return extraPrice;
-    }
-
-    public void setExtraPrice(double extraPrice) {
-        this.extraPrice = extraPrice;
-    }
+	/**
+	 * Sets total price to this meal
+	 * @param totalPrice
+	 */
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	
+	
 	
 }
