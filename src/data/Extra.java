@@ -78,7 +78,5 @@ public class Extra {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	
-	
 
 }
