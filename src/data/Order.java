@@ -2,6 +2,7 @@ package data;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -60,7 +61,7 @@ public class Order {
 	 */
 	@Column( name = "Date_Time", nullable=false)
 	@Temporal( TemporalType.TIMESTAMP)
-	private Calendar calendar;
+	private Date date;
 	
 	/**
 	 * The amount to pay for the items/meals in this order
@@ -162,21 +163,21 @@ public class Order {
 		this.items = items;
 	}
 
-	/**
-	 * Returns the Date&Time when this order was created
-	 * @return
-	 */
-	public Calendar getCalendar() {
-		return calendar;
-	}
+    /**
+     * Returns the Date&Time when this order was created
+     * @return
+     */
+    public Date getDate() {
+        return date;
+    }
 
-	/**
-	 * Sets the Date and Time for this order ( when it was created )
-	 * @param dateTime
-	 */
-	public void setCalendar(Calendar calendar) {
-		this.calendar = calendar;
-	}
+    /**
+     * Sets the Date and Time for this order ( when it was created )
+     * @param
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
 	/**
 	 * Returns the amount to pay for this order
@@ -188,15 +189,16 @@ public class Order {
         double extrasPrice = 0;
         
         for( OrderedMeal meal : getMeals() ) {
-            if (meal.getChosenDrink()!= null) {
-                drinkPrice = meal.getChosenDrink().getPrice();
-            }
-        	// if the amount of extras chosen is bigger then the amount allowed,
-        	// add the price of last meal - to be changed according to the expensive/cheap extra 
-        	if (meal.getChosenExtras().size() > meal.getParentMeal().getExtraAmount()){
-        		extrasPrice = meal.getChosenExtras().get(meal.getChosenExtras().size()-1).getPrice();
-        	}
-            payment += (meal.getParentMeal().getPrice()) + drinkPrice + extrasPrice;
+//          if (meal.getChosenDrink()!= null) {
+//          drinkPrice = meal.getChosenDrink().getPrice();
+//      }
+//      // if the amount of extras chosen is bigger then the amount allowed,
+//      // add the price of last meal - to be changed according to the expensive/cheap extra
+//      if (meal.getChosenExtras().size() > meal.getParentMeal().getExtraAmount()){
+//          extrasPrice = meal.getChosenExtras().get(meal.getChosenExtras().size()-1).getPrice();
+//      }
+//      payment += (meal.getParentMeal().getPrice()) + drinkPrice + extrasPrice;
+        	payment += meal.getTotalPrice();
         }
 
         for( Item item : getItems() ) {

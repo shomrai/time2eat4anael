@@ -67,6 +67,8 @@ public class OrderedMeal {
 	@Column(name = "Total_Price", nullable=false)
 	private Double totalPrice;
 	
+	private String title;
+	
 	/**
 	 * The parent-order of this ordered meal
 	 */
@@ -105,6 +107,7 @@ public class OrderedMeal {
 	 */
 	public void setParentMeal(Meal parentMeal) {
 		this.parentMeal = parentMeal;
+        this.title = parentMeal.getTitle();
 	}
 	
 	/**
@@ -186,6 +189,14 @@ public class OrderedMeal {
 	 */
 	public void setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	
