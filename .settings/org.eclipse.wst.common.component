@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="CafeteriaServer">
+    <wb-module deploy-name="time2eat">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="CafeteriaServer"/>
-        <property name="java-output-path" value="/CafeteriaServer/build/classes"/>
+        <property name="java-output-path" value="/time2eat/build/classes"/>
+        <property name="context-root" value="time2eat"/>
     </wb-module>
 </project-modules>

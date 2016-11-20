@@ -40,7 +40,7 @@ public class JpaManager {
 	public List<Category> getCategories() {
 		Query query = em.createQuery("select c from Category c");
 		Vector<Category> categories = (Vector<Category>)query.getResultList();
-		System.out.println(categories.get(0).getTitle());
+//System.out.println(categories.get(0).getTitle());
 		return categories;	
 	}
 	

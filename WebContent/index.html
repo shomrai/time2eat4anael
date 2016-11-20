@@ -5,51 +5,9 @@
 		<title>Cafeteria</title>
 	</head>
 	
-	<body onload="init()">
-		
-		<button onclick="getItems()">Create Category</button>
-		<div id="cat"></div>
-		<h1 id="title"></h1>
-		
-		
-		
-		
-		<script type="text/javascript">
-			var xmlhttp;
-			var URL = "http://localhost:8080/CafeteriaServer/rest/data/";
-			function init() {
-				xmlhttp = new XMLHttpRequest();
-				drawCategories();
-			}
-			
-			function drawCategories() {
-				xmlhttp.open('GET',URL + "getCategories");
-				xmlhttp.send(null);
-				xmlhttp.onreadystatechange = function() {
-					if(xmlhttp.readyState == 4) {
-						if(xmlhttp.status == 200) {
-							document.getElementById("title").innerHTML = xmlhttp.responseText;
-						}
-					} else {
-						document.getElementById("title").innerHTML = "Bad";
-					}
-				}
-			}
-			
-			function getItems() {
-				xmlhttp.open('GET',URL + "getItems");
-				xmlhttp.send(null);
-				xmlhttp.onreadystatechange = function() {
-					if(xmlhttp.readyState == 4) {
-						if(xmlhttp.status == 200) {
-							document.getElementById("title").innerHTML = xmlhttp.responseText;
-						}
-					} else {
-						document.getElementById("title").innerHTML = "Bad";
-					}
-				}
-			}
-		</script>
+	<body>
+			<h1>Welcome to Cafeteria Server</h1>
+
 		
 	</body>
 </html>
